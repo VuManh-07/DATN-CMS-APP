@@ -3,7 +3,6 @@
 import { Router } from "express";
 import { asyncHandler } from "../../helpers/asyncHandler";
 import {
-  authenticate,
   requireRole,
   ADMIN_ROLES,
   OPERATOR_ROLES,
@@ -11,8 +10,6 @@ import {
 import CardController from "../../controllers/card.controller";
 
 const router = Router();
-
-router.use(authenticate);
 
 // --- read ---
 router.get("/", asyncHandler(CardController.list));

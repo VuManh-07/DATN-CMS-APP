@@ -2,12 +2,11 @@
 
 import { Router } from "express";
 import { asyncHandler } from "../../helpers/asyncHandler";
-import { authenticate, requireRole } from "../../auth/checkAuth";
+import { requireRole } from "../../auth/checkAuth";
 import { AdminRole } from "../../types/enums";
 import KeySetController from "../../controllers/keySet.controller";
 
 const router = Router();
-router.use(authenticate, requireRole());
 
 router.get("/", asyncHandler(KeySetController.list));
 router.get("/:id", asyncHandler(KeySetController.detail));
